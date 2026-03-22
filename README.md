@@ -8,6 +8,7 @@
   [![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/atennebris.gmsync?label=Marketplace&color=blue)](https://marketplace.visualstudio.com/items?itemName=atennebris.gmsync)
   [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
   [![VS Code](https://img.shields.io/badge/VS%20Code-%5E1.85.0-blue)](https://code.visualstudio.com/)
+  [![GameMaker](https://img.shields.io/badge/GameMaker-2022%2B-orange)](https://gamemaker.io/en/gamemaker)
 </div>
 
 ---
