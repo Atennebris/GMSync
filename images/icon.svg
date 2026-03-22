@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Тёмный фон с закруглением -->
+  <rect width="128" height="128" rx="24" fill="#1e1b4b"/>
+  <!-- Корпус геймпада -->
+  <path d="M88 36H40C28.95 36 20 44.95 20 56v16c0 11.05 8.95 20 20 20h48c11.05 0 20-8.95 20-20V56c0-11.05-8.95-20-20-20z" fill="#4338ca"/>
+  <!-- D-pad крест -->
+  <rect x="39" y="57" width="8" height="14" rx="2" fill="#818cf8"/>
+  <rect x="33" y="63" width="20" height="8" rx="2" fill="#818cf8"/>
+  <!-- Кнопки ABXY -->
+  <circle cx="81" cy="59" r="6" fill="#f87171"/>
+  <circle cx="94" cy="66" r="6" fill="#fbbf24"/>
+  <circle cx="81" cy="73" r="6" fill="#34d399"/>
+  <circle cx="68" cy="66" r="6" fill="#60a5fa"/>
+  <!-- Центральные шишки -->
+  <circle cx="55" cy="53" r="4" fill="#6366f1" opacity="0.8"/>
+  <circle cx="73" cy="53" r="4" fill="#6366f1" opacity="0.8"/>
+</svg>

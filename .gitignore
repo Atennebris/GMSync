@@ -1,0 +1,8 @@
+node_modules/
+out/
+*.vsix
+.vscode/
+.claude/
+*.tmp
+_rescan_ping/
+_test_runner.yyp

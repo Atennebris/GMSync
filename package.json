@@ -1,0 +1,248 @@
+{
+  "name": "gmsync",
+  "displayName": "GMSync",
+  "description": "Live-edit GameMaker Studio 2 projects from VS Code without IDE restart. Create resources, modify events, manage rooms and layers, control live game via TCP Bridge.",
+  "version": "0.1.0",
+  "publisher": "atennebris",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Atennebris/GMSync"
+  },
+  "bugs": {
+    "url": "https://github.com/Atennebris/GMSync/issues"
+  },
+  "homepage": "https://github.com/Atennebris/GMSync#readme",
+  "icon": "images/logo_extension_gms2_idevscode.png",
+  "galleryBanner": {
+    "color": "#1e1e2e",
+    "theme": "dark"
+  },
+  "keywords": [
+    "gamemaker",
+    "gms2",
+    "gml",
+    "live-edit",
+    "game-development",
+    "gamemaker-studio",
+    "game-maker"
+  ],
+  "categories": [
+    "Programming Languages",
+    "Other"
+  ],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "activationEvents": ["workspaceContains:**/*.yyp"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "gml",
+        "aliases": ["GML", "GameMaker Language"],
+        "extensions": [".gml"],
+        "configuration": "./languages/gml.language-configuration.json"
+      },
+      {
+        "id": "yyp",
+        "aliases": ["YYP", "GameMaker Project"],
+        "extensions": [".yyp", ".yy"]
+      }
+    ],
+    "grammars": [
+      {
+        "language": "gml",
+        "scopeName": "source.gml",
+        "path": "./syntaxes/gml.tmLanguage.json"
+      },
+      {
+        "language": "yyp",
+        "scopeName": "source.yyp",
+        "path": "./syntaxes/yyp.tmLanguage.json"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "gms2-live-edit",
+          "title": "GMSync",
+          "icon": "images/activitybar.svg"
+        }
+      ]
+    },
+    "views": {
+      "gms2-live-edit": [
+        {
+          "id": "gms2LiveEditTree",
+          "name": "Project Resources"
+        }
+      ]
+    },
+    "commands": [
+      { "command": "gms2-live-edit.openLogs",        "title": "GMSync: Open Logs" },
+      { "command": "gms2-live-edit.reloadProject",   "title": "GMSync: Reload Project" },
+      { "command": "gms2-live-edit.refreshTree",     "title": "GMSync: Refresh Tree", "icon": "$(refresh)" },
+      { "command": "gms2-live-edit.createObject",    "title": "GMSync: Create Object",    "icon": "$(add)" },
+      { "command": "gms2-live-edit.modifyEvent",     "title": "GMSync: Modify Event" },
+      { "command": "gms2-live-edit.writeGmlFile",    "title": "GMSync: Write GML File" },
+      { "command": "gms2-live-edit.createScript",    "title": "GMSync: Create Script",    "icon": "$(add)" },
+      { "command": "gms2-live-edit.createRoom",      "title": "GMSync: Create Room",      "icon": "$(add)" },
+      { "command": "gms2-live-edit.createShader",    "title": "GMSync: Create Shader",    "icon": "$(add)" },
+      { "command": "gms2-live-edit.createTimeline",  "title": "GMSync: Create Timeline",  "icon": "$(add)" },
+      { "command": "gms2-live-edit.duplicateObject", "title": "GMSync: Duplicate Object" },
+      { "command": "gms2-live-edit.addRoomInstance",       "title": "GMSync: Add Instance to Room" },
+      { "command": "gms2-live-edit.addLayer",              "title": "GMSync: Add Layer to Room" },
+      { "command": "gms2-live-edit.removeLayer",           "title": "GMSync: Remove Layer from Room" },
+      { "command": "gms2-live-edit.setBackgroundColour",   "title": "GMSync: Set Background Colour" },
+      { "command": "gms2-live-edit.setBackgroundSprite",   "title": "GMSync: Set Background Sprite" },
+      { "command": "gms2-live-edit.createSprite",    "title": "GMSync: Create Sprite",    "icon": "$(add)" },
+      { "command": "gms2-live-edit.createFont",      "title": "GMSync: Create Font",      "icon": "$(add)" },
+      { "command": "gms2-live-edit.createPath",      "title": "GMSync: Create Path",      "icon": "$(add)" },
+      { "command": "gms2-live-edit.createSequence",  "title": "GMSync: Create Sequence",  "icon": "$(add)" },
+      { "command": "gms2-live-edit.createNote",      "title": "GMSync: Create Note",        "icon": "$(add)" },
+      { "command": "gmsync.bridge.start",            "title": "GMSync: Start Bridge",       "icon": "$(debug-start)" },
+      { "command": "gmsync.bridge.stop",             "title": "GMSync: Stop Bridge",        "icon": "$(debug-stop)" },
+      { "command": "gmsync.bridge.install",          "title": "GMSync: Install Bridge Assets" },
+      { "command": "gmsync.bridge.uninstall",        "title": "GMSync: Uninstall Bridge Assets" },
+      { "command": "gmsync.bridge.sendCommand",      "title": "GMSync: Bridge — Send Command" },
+      { "command": "gmsync.bridge.showLogs",         "title": "GMSync: Bridge — Show Logs" },
+      { "command": "gms2-live-edit.pickTheme",    "title": "GMSync: GML Highlight Theme", "icon": "$(symbol-color)" },
+      { "command": "gms2-live-edit.openSettings", "title": "GMSync: Settings",            "icon": "$(settings-gear)" }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "gms2-live-edit.refreshTree",
+          "when": "view == gms2LiveEditTree",
+          "group": "navigation"
+        },
+        {
+          "command": "gms2-live-edit.openSettings",
+          "when": "view == gms2LiveEditTree",
+          "group": "navigation"
+        },
+        {
+          "command": "gmsync.bridge.start",
+          "when": "view == gms2LiveEditTree && !gmsync.bridge.running",
+          "group": "navigation"
+        },
+        {
+          "command": "gmsync.bridge.stop",
+          "when": "view == gms2LiveEditTree && gmsync.bridge.running",
+          "group": "navigation"
+        },
+        {
+          "command": "gms2-live-edit.createObject",
+          "when": "view == gms2LiveEditTree",
+          "group": "1_create@1"
+        },
+        {
+          "command": "gms2-live-edit.createScript",
+          "when": "view == gms2LiveEditTree",
+          "group": "1_create@2"
+        },
+        {
+          "command": "gms2-live-edit.createRoom",
+          "when": "view == gms2LiveEditTree",
+          "group": "1_create@3"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "gms2-live-edit.createObject",
+          "when": "view == gms2LiveEditTree && viewItem == category-objects",
+          "group": "gms2@1"
+        },
+        {
+          "command": "gms2-live-edit.createScript",
+          "when": "view == gms2LiveEditTree && viewItem == category-scripts",
+          "group": "gms2@1"
+        },
+        {
+          "command": "gms2-live-edit.createRoom",
+          "when": "view == gms2LiveEditTree && viewItem == category-rooms",
+          "group": "gms2@1"
+        },
+        {
+          "command": "gms2-live-edit.duplicateObject",
+          "when": "view == gms2LiveEditTree && viewItem == object",
+          "group": "gms2@1"
+        },
+        {
+          "command": "gms2-live-edit.modifyEvent",
+          "when": "view == gms2LiveEditTree && viewItem == object",
+          "group": "gms2@2"
+        },
+        {
+          "command": "gms2-live-edit.addRoomInstance",
+          "when": "view == gms2LiveEditTree && viewItem == room",
+          "group": "gms2@1"
+        },
+        {
+          "command": "gms2-live-edit.createSprite",
+          "when": "view == gms2LiveEditTree && viewItem == category-sprites",
+          "group": "gms2@1"
+        },
+        {
+          "command": "gms2-live-edit.createFont",
+          "when": "view == gms2LiveEditTree && viewItem == category-fonts",
+          "group": "gms2@1"
+        },
+        {
+          "command": "gms2-live-edit.createPath",
+          "when": "view == gms2LiveEditTree && viewItem == category-paths",
+          "group": "gms2@1"
+        },
+        {
+          "command": "gms2-live-edit.createSequence",
+          "when": "view == gms2LiveEditTree && viewItem == category-sequences",
+          "group": "gms2@1"
+        },
+        {
+          "command": "gms2-live-edit.createNote",
+          "when": "view == gms2LiveEditTree && viewItem == category-notes",
+          "group": "gms2@1"
+        },
+        {
+          "command": "gms2-live-edit.createShader",
+          "when": "view == gms2LiveEditTree && viewItem == category-shaders",
+          "group": "gms2@1"
+        },
+        {
+          "command": "gms2-live-edit.createTimeline",
+          "when": "view == gms2LiveEditTree && viewItem == category-timelines",
+          "group": "gms2@1"
+        },
+        {
+          "command": "gms2-live-edit.modifyEvent",
+          "when": "view == gms2LiveEditTree && viewItem == event",
+          "group": "gms2@1"
+        },
+        {
+          "command": "gms2-live-edit.writeGmlFile",
+          "when": "view == gms2LiveEditTree && viewItem == event",
+          "group": "gms2@2"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "pretest": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "@bscotch/gml-parser": "^1.17.2",
+    "@bscotch/yy": "^2.7.0"
+  }
+}
