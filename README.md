@@ -5,6 +5,7 @@
 
   **Live-edit your GameMaker Studio 2 project from VS Code — without restarting the IDE.**
 
+  [![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white)](https://discord.gg/pQ9wDAqZ3A)
   [![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/atennebris.gmsync?label=Marketplace&color=blue)](https://marketplace.visualstudio.com/items?itemName=atennebris.gmsync)
   [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
   [![VS Code](https://img.shields.io/badge/VS%20Code-%5E1.85.0-blue)](https://code.visualstudio.com/)
@@ -230,7 +231,7 @@ Open `GMSync: Settings` to configure:
 
 ## Community & Contact
 
-- **Discord** — news, bug reports, chat: [discord.gg/VE4pVgET](https://discord.gg/VE4pVgET)
+- **Discord** — news, bug reports, chat: [discord.gg/pQ9wDAqZ3A](https://discord.gg/pQ9wDAqZ3A)
 - **X (Twitter)** — posts and updates: [x.com/NeroNocturnus](https://x.com/NeroNocturnus)
 
 ---
